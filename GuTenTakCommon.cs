@@ -22,6 +22,42 @@ namespace GuTenTak.Ezreal
             return null;
         }
 
+        public static void Obj_AI_Turret_OnBasicAttack2(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
+        {
+            if (sender is Obj_AI_Turret && sender.Distance(Player.Instance) < 800 && sender.IsAlly)
+            {
+                if (!(args.Target is AIHeroClient) && args.Target != null)
+                {
+                    
+                    var Minions = EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Enemy, Player.Instance.Position, 450);
+                    foreach (var Minion in Minions)
+                    
+                    if (Minion != null && Prediction.Health.GetPrediction(Minion, 1) > Player.Instance.TotalAttackDamage && Prediction.Health.GetPrediction(Minion, 1) - sender.TotalAttackDamage * 1.1  <= 0 )
+                     
+                    {
+                        
+                        if( Minion.IsValidTarget(Player.Instance.GetAutoAttackRange(Minion)) && Orbwalker.CanAutoAttack && Minion == args.Target)
+                        {
+                            if(Q.IsReady())
+                            {
+                                
+                                {
+                                    
+                                    Player.IssueOrder(GameObjectOrder.AttackUnit, Minion);
+                                    Core.DelayAction( () => Player.CastSpell(SpellSlot.Q), 200);
+                                    Chat.Print("Last Hitting With AA-Q");
+                                    
+                                }
+                            }
+                        
+
+                            
+                        }
+
+                    }
+                }
+            }
+        }   
         public static void MovingPlayer(Vector3 Pos)
         {
             Player.IssueOrder(GameObjectOrder.MoveTo, Pos);
