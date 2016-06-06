@@ -330,7 +330,7 @@ namespace GuTenTak.Ezreal
 
             if (source == null || !source.IsValid) return;
 
-            if (Player.Instance.ManaPercent >= ModesMenu2["ManaF"].Cast<Slider>().CurrentValue)
+            if (Player.Instance.ManaPercent >= ModesMenu2["ManaF"].Cast<Slider>().CurrentValue && source.Position.Distance(ObjectManager.Player.Position) <)
             {
                 if (ModesMenu2["LastQ"].Cast<CheckBox>().CurrentValue && Q.IsReady())
                 {
