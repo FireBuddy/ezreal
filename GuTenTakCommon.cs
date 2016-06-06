@@ -44,7 +44,7 @@ namespace GuTenTak.Ezreal
                                 {
                                     
                                     Player.IssueOrder(GameObjectOrder.AttackUnit, Minion);
-                                    Core.DelayAction( () => Player.CastSpell(SpellSlot.Q), 200);
+                                     Q.Cast(Minion);
                                     Chat.Print("Last Hitting With AA-Q");
                                     
                                 }
