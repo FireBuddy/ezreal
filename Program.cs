@@ -359,7 +359,7 @@ namespace GuTenTak.Ezreal
                 if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.LastHit))
                 {
                     Common.LastHit();
-                    Obj_AI_Turret.OnBasicAttack += common.Obj_AI_Turret_OnBasicAttack2;
+                    Obj_AI_Turret.OnBasicAttack += Common.Obj_AI_Turret_OnBasicAttack2;
                 }
                 if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Flee))
                 {
